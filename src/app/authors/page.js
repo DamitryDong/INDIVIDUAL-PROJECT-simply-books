@@ -6,8 +6,8 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Button } from 'react-bootstrap';
 import { useAuth } from '@/utils/context/authContext';
-import BookCard from '@/components/BookCard'; // TODO: change to author cards
 import { getAuthors } from '../../api/authorData';
+import AuthorCard from '../../components/AuthorCard';
 
 function AuthorsPage() {
   // Set a state for books
@@ -30,13 +30,13 @@ function AuthorsPage() {
 
   return (
     <div className="text-center my-4">
-      <Link href="/book/new" passHref>
+      <Link href="/authors/new" passHref>
         <Button>Add an Author TODO</Button>
       </Link>
       <div className="d-flex flex-wrap">
         {/* map over books here using BookCard component */}
         {authors.map((author) => (
-          <BookCard key={author.firebaseKey} bookObj={author} onUpdate={getAllTheAuthors} />
+          <AuthorCard key={author.firebaseKey} authorObj={author} onUpdate={getAllTheAuthors} />
         ))}
       </div>
     </div>

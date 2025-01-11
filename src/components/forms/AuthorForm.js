@@ -19,21 +19,18 @@ const initialState = {
   author_id: '',
 };
 
-function BookForm({ obj = initialState }) {
+function AuthorForm({ obj = initialState }) {
   const [formInput, setFormInput] = useState(obj);
   const [authors, setAuthors] = useState([]);
   const router = useRouter();
   const { user } = useAuth();
 
-  // This use Effect is used to get Author Data and we use it it obj.firebaseKey exist.
   useEffect(() => {
     getAuthors(user.uid).then(setAuthors);
-    console.log(router);
 
     if (obj.firebaseKey) setFormInput(obj);
   }, [obj, user]);
 
-  // THis handle Change is used for every input so the filed doesn't disapear whenever we move out of it.
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormInput((prevState) => ({
@@ -42,7 +39,6 @@ function BookForm({ obj = initialState }) {
     }));
   };
 
-  // This is what we run for the submit. (onSubmit for Form)
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.firebaseKey) {
@@ -63,7 +59,7 @@ function BookForm({ obj = initialState }) {
       <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Book</h2>
 
       {/* TITLE INPUT  */}
-      <FloatingLabel controlId="floatingInput1" label="Book Title" className="mb-3">
+      <FloatingLabel controlId="floatingInput1" label="NEED TO BE CHANGED" className="mb-3">
         <Form.Control type="text" placeholder="Enter a title" name="title" value={formInput.title} onChange={handleChange} required />
       </FloatingLabel>
 
@@ -116,7 +112,7 @@ function BookForm({ obj = initialState }) {
   );
 }
 
-BookForm.propTypes = {
+AuthorForm.propTypes = {
   obj: PropTypes.shape({
     description: PropTypes.string,
     image: PropTypes.string,
@@ -128,4 +124,4 @@ BookForm.propTypes = {
   }),
 };
 
-export default BookForm;
+export default AuthorForm;
