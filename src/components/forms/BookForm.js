@@ -25,7 +25,7 @@ function BookForm({ obj = initialState }) {
   const router = useRouter();
   const { user } = useAuth();
 
-  // This use Effect is used to get Author Data and we use it it obj.firebaseKey exist.
+  // This use Effect is used to get Author Data and we use it for the dropdown
   useEffect(() => {
     getAuthors(user.uid).then(setAuthors);
     console.log(router);

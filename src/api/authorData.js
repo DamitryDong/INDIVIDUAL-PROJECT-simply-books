@@ -64,8 +64,20 @@ const deleteSingleAuthor = (firebaseKey) =>
       .catch(reject);
   });
 
-// FIXME: UPDATE AUTHOR
-const updateAuthor = () => {};
+// UPDATE AUTHOR
+const updateAuthor = (payload) =>
+  new Promise((resolve, reject) => {
+    fetch(`${endpoint}/authors/${payload.firebaseKey}.json`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    })
+      .then((response) => response.json())
+      .then((data) => resolve(data))
+      .catch(reject);
+  });
 
 // TODO: GET A SINGLE AUTHOR'S BOOKS
 const getAuthorBooks = () => {};
