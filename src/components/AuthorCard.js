@@ -5,14 +5,14 @@ import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Link from 'next/link';
-import { deleteBook } from '../api/bookData';
+import { deleteSingleAuthor } from '../api/authorData';
 
 function AuthorCard({ authorObj, onUpdate }) {
   // FOR DELETE, WE NEED TO REMOVE THE BOOK AND HAVE THE VIEW RERENDER,
   // SO WE PASS THE FUNCTION FROM THE PARENT THAT GETS THE BOOKS
-  const deleteThisBook = () => {
+  const deleteThisAuthor = () => {
     if (window.confirm(`Delete ${authorObj.first_name} ${authorObj.last_name}?`)) {
-      deleteBook(authorObj.firebaseKey).then(() => onUpdate());
+      deleteSingleAuthor(authorObj.firebaseKey).then(() => onUpdate());
     }
   };
 
@@ -42,7 +42,7 @@ function AuthorCard({ authorObj, onUpdate }) {
         <Link href={`/authors/edit/${authorObj.firebaseKey}`} passHref>
           <Button variant="info">EDIT</Button>
         </Link>
-        <Button variant="danger" onClick={deleteThisBook} className="m-2">
+        <Button variant="danger" onClick={deleteThisAuthor} className="m-2">
           DELETE
         </Button>
       </Card.Body>

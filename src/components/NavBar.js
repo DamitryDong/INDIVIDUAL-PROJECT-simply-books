@@ -21,8 +21,14 @@ export default function NavBar() {
             <Link className="nav-link" href="/authors">
               Authors
             </Link>
+            <Link className="nav-link" href="/">
+              Book Store WIP
+            </Link>
+            <Link className="nav-link" href="/">
+              Cart WIP
+            </Link>
             <Link className="nav-link" href="/profile">
-              Profile
+              profile
             </Link>
           </Nav>
           <Button variant="danger" onClick={signOut}>

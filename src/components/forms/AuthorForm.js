@@ -43,7 +43,7 @@ function AuthorForm({ obj = initialState }) {
       createAuthor(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateAuthor(patchPayload).then(() => {
-          router.push('/');
+          router.push('/authors'); // these routers are used so after we update, we return to the authors page.
         });
       });
     }
@@ -78,7 +78,7 @@ function AuthorForm({ obj = initialState }) {
         className="text-white mb-3"
         type="switch"
         id="favorite"
-        name="favorite"
+        name="favorite" // Note that Name is used on the handle change so is important
         label="favorite?"
         checked={formInput.favorite}
         onChange={(e) => {
@@ -90,19 +90,18 @@ function AuthorForm({ obj = initialState }) {
       />
 
       {/* SUBMIT BUTTON  */}
-      <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Book</Button>
+      <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Author</Button>
     </Form>
   );
 }
 
 AuthorForm.propTypes = {
   obj: PropTypes.shape({
-    description: PropTypes.string,
+    email: PropTypes.string,
     image: PropTypes.string,
-    price: PropTypes.string,
-    sale: PropTypes.bool,
-    title: PropTypes.string,
-    author_id: PropTypes.string,
+    first_name: PropTypes.string,
+    last_name: PropTypes.string,
+    favorite: PropTypes.bool,
     firebaseKey: PropTypes.string,
   }),
 };
