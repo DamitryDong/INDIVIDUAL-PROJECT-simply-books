@@ -79,8 +79,21 @@ const updateAuthor = (payload) =>
       .catch(reject);
   });
 
-// TODO: GET A SINGLE AUTHOR'S BOOKS
-const getAuthorBooks = () => {};
+// GET A SINGLE AUTHOR'S BOOKS
+const getAuthorBooks = (uid) =>
+  new Promise((resolve, reject) => {
+    fetch(`${endpoint}/books.json?orderBy="author_id"&equalTo="${uid}"`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        resolve(Object.values(data));
+      })
+      .catch(reject);
+  });
 
 const favoriteAuthors = (uid) =>
   new Promise((resolve, reject) => {
