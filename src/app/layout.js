@@ -1,16 +1,19 @@
+'use client';
+
 import { Poppins } from 'next/font/google'; // Import the Lobster font
 import PropTypes from 'prop-types';
 import ClientProvider from '@/utils/context/ClientProvider';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@/styles/globals.css';
 import Head from 'next/head'; // Import next/head
+import { CartProvider } from '../components/cartContext'; // This is brought in to wrap the whole thing so what's in the cart will be there always
 
 // Load the Lobster font from google (just for funzy)
 const poppins = Poppins({ subsets: ['latin'], weight: ['300', '400', '600'] });
 
 export default function RootLayout({ children }) {
   return (
-    <>
+    <CartProvider>
       <Head>
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" />
@@ -26,7 +29,7 @@ export default function RootLayout({ children }) {
           <ClientProvider>{children}</ClientProvider>
         </body>
       </html>
-    </>
+    </CartProvider>
   );
 }
 
