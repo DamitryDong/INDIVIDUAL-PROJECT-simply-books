@@ -3,13 +3,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
 import Link from 'next/link';
 import { deleteBook } from '../api/bookData';
 
 function BookCard({ bookObj, onUpdate }) {
-  // FOR DELETE, WE NEED TO REMOVE THE BOOK AND HAVE THE VIEW RERENDER,
-  // SO WE PASS THE FUNCTION FROM THE PARENT THAT GETS THE BOOKS
   const deleteThisBook = () => {
     if (window.confirm(`Delete ${bookObj.title}?`)) {
       deleteBook(bookObj.firebaseKey).then(() => onUpdate());
@@ -17,34 +14,30 @@ function BookCard({ bookObj, onUpdate }) {
   };
 
   return (
-    <Card style={{ width: '36rem', margin: '35px' }}>
-      <Card.Img variant="top" src={bookObj.image} alt={bookObj.title} style={{ height: '800px' }} />
-      <Card.Body>
-        <Card.Title>{bookObj.title}</Card.Title>
-        <p className="card-text bold">
-          {bookObj.sale && (
-            <span>
-              SALE
-              <br />
-            </span>
-          )}{' '}
-          ${bookObj.price}
+    <div className="book-card">
+      <img className="book-image" src={bookObj.image} alt={bookObj.title} />
+      <div className="overlay">
+        <h2 className="book-title">{bookObj.title}</h2>
+        <p className="book-description">
+          <strong>Description:</strong> {bookObj.description}
         </p>
-        {/* DYNAMIC LINK TO VIEW THE BOOK DETAILS  */}
-        <Link href={`/book/${bookObj.firebaseKey}`} passHref>
-          <Button variant="primary" className="m-2">
-            VIEW
+        <div className="button-container">
+          <Link href={`/book/${bookObj.firebaseKey}`} passHref>
+            <Button variant="dark" className="bookmark-button view">
+              VIEW
+            </Button>
+          </Link>
+          <Link href={`/book/edit/${bookObj.firebaseKey}`} passHref>
+            <Button variant="dark" className="bookmark-button edit">
+              EDIT
+            </Button>
+          </Link>
+          <Button variant="danger" onClick={deleteThisBook} className="bookmark-button delete">
+            DELETE
           </Button>
-        </Link>
-        {/* DYNAMIC LINK TO EDIT THE BOOK DETAILS  */}
-        <Link href={`/book/edit/${bookObj.firebaseKey}`} passHref>
-          <Button variant="info">EDIT</Button>
-        </Link>
-        <Button variant="danger" onClick={deleteThisBook} className="m-2">
-          DELETE
-        </Button>
-      </Card.Body>
-    </Card>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -52,7 +45,7 @@ BookCard.propTypes = {
   bookObj: PropTypes.shape({
     image: PropTypes.string,
     title: PropTypes.string,
-    sale: PropTypes.bool,
+    description: PropTypes.string,
     price: PropTypes.string,
     firebaseKey: PropTypes.string,
   }).isRequired,

@@ -3,7 +3,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { getBooks } from '../../api/bookData';
+import { getAllBooks } from '../../api/bookData';
 import { useAuth } from '../../utils/context/authContext';
 import CommunityBookCard from '../../components/CommunityBookCard';
 
@@ -16,7 +16,7 @@ function Home() {
 
   // create a function that makes the API call to get all the books
   const getAllTheBooks = () => {
-    getBooks(user.uid).then(setBooks);
+    getAllBooks(user.uid).then(setBooks);
     console.log(user.uid);
   };
 

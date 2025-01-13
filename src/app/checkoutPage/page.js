@@ -16,9 +16,12 @@ function CartPage() {
     removeFromCart(firebaseKey); // Check the useCart function to see how, but this just removes on item with that firebasekey
   };
 
+  const totalCost = cartItems.reduce((total, item) => total + parseFloat(item.price || 0), 0);
+
   return (
     <div>
       <h2>Your Cart</h2>
+      <h2>Total: ${totalCost} </h2>
       <Button variant="danger" onClick={handleRemoveItem}>
         Clear Cart
       </Button>
@@ -30,8 +33,7 @@ function CartPage() {
             <Card key={item.firebaseKey} style={{ width: '9rem', margin: '5px' }}>
               <Card.Img variant="top" src={item.image} alt={item.title} style={{ height: '200px' }} />
               <Card.Body>
-                <Card.Title>{item.title}</Card.Title>
-                <p>{item.price}</p>
+                <p>${item.price}</p>
                 <Button variant="danger" onClick={() => handleRemoveOneItem(item.firebaseKey)}>
                   Remove
                 </Button>

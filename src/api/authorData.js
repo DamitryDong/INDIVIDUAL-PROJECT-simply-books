@@ -21,6 +21,24 @@ const getAuthors = (uid) =>
       .catch(reject);
   });
 
+const getAllTheAuthors = () =>
+  new Promise((resolve, reject) => {
+    fetch(`${endpoint}/authors.json`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data) {
+          resolve(Object.values(data));
+        } else {
+          resolve([]);
+        }
+      })
+      .catch(reject);
+  });
 // CREATE AUTHOR
 const createAuthor = (payload) =>
   new Promise((resolve, reject) => {
@@ -111,4 +129,4 @@ const favoriteAuthors = (uid) =>
       .catch(reject);
   });
 
-export { getAuthors, createAuthor, getSingleAuthor, deleteSingleAuthor, updateAuthor, favoriteAuthors, getAuthorBooks };
+export { getAuthors, createAuthor, getSingleAuthor, deleteSingleAuthor, updateAuthor, favoriteAuthors, getAuthorBooks, getAllTheAuthors };
