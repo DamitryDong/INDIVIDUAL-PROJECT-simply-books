@@ -28,7 +28,6 @@ function BookForm({ obj = initialState }) {
   // This use Effect is used to get Author Data and we use it for the dropdown
   useEffect(() => {
     getAuthors(user.uid).then(setAuthors);
-    console.log(router);
 
     if (obj.firebaseKey) setFormInput(obj);
   }, [obj, user]);
@@ -60,7 +59,7 @@ function BookForm({ obj = initialState }) {
 
   return (
     <Form onSubmit={handleSubmit} className="text-black">
-      <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Book</h2>
+      <h2 className="text-black mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Book</h2>
 
       {/* TITLE INPUT  */}
       <FloatingLabel controlId="floatingInput1" label="Book Title" className="mb-3">
@@ -96,7 +95,7 @@ function BookForm({ obj = initialState }) {
 
       {/* A WAY TO HANDLE UPDATES FOR TOGGLES, RADIOS, ETC  */}
       <Form.Check
-        className="text-white mb-3"
+        className="text-black mb-3"
         type="switch"
         id="sale"
         name="sale"

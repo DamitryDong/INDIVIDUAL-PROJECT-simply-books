@@ -29,7 +29,7 @@ export default function ViewAuthor({ params }) {
       <div className="d-flex flex-column">
         <img src={authorDetails.image} alt="picture of author" style={{ width: '300px' }} />
       </div>
-      <div className="text-white ms-5 details">
+      <div className="text-black ms-5 details">
         <h5>
           {authorDetails.first_name} {authorDetails.last_name}
           {authorDetails.favorite ? ' 🤍' : ''}

@@ -20,7 +20,7 @@ export default function ViewBook({ params }) {
       <div className="d-flex flex-column">
         <img src={bookDetails.image} alt={bookDetails.title} style={{ width: '300px' }} />
       </div>
-      <div className="text-white ms-5 details">
+      <div className="text-black ms-5 details">
         <h5>
           {bookDetails.title} by {bookDetails.authorObject?.first_name} {bookDetails.authorObject?.last_name}
           {bookDetails.authorObject?.favorite ? ' 🤍' : ''}

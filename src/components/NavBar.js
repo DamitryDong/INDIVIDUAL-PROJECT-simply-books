@@ -6,10 +6,10 @@ import { signOut } from '../utils/auth';
 
 export default function NavBar() {
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar collapseOnSelect expand="lg" bg="warning">
       <Container>
         <Link passHref href="/" className="navbar-brand">
-          Simply Books
+          Simply B
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -21,14 +21,14 @@ export default function NavBar() {
             <Link className="nav-link" href="/authors">
               Authors
             </Link>
-            <Link className="nav-link" href="/">
-              Book Store WIP
-            </Link>
             <Link className="nav-link" href="/profile">
-              profile
+              Profile
             </Link>
             <Link className="nav-link" href="/">
-              Cart WIP
+              Community List WIP
+            </Link>
+            <Link className="nav-link" href="/">
+              Community Adds WIP
             </Link>
           </Nav>
           <Button variant="danger" onClick={signOut}>

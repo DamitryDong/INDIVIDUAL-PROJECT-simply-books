@@ -51,34 +51,34 @@ function AuthorForm({ obj = initialState }) {
 
   return (
     <Form onSubmit={handleSubmit} className="text-black">
-      <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Book</h2>
+      <h2 className="text-black">{obj.firebaseKey ? 'Update' : 'Create'} Book</h2>
 
-      {/* TITLE INPUT  */}
-      <FloatingLabel controlId="floatingInput1" label="Author First Name" className="mb-3">
-        <Form.Control type="text" placeholder="John" name="first_name" value={formInput.first_name} onChange={handleChange} required />
+      {/* TITLE INPUT */}
+      <FloatingLabel controlId="floatingInput1" label="Author First Name" className="mb-3 text-black">
+        <Form.Control type="text" placeholder="John" name="first_name" value={formInput.first_name} onChange={handleChange} required className="text-black" />
       </FloatingLabel>
 
-      {/* IMAGE INPUT  */}
-      <FloatingLabel controlId="floatingInput2" label="Author Last Name" className="mb-3">
-        <Form.Control type="text" placeholder="Smith" name="last_name" value={formInput.last_name} onChange={handleChange} required />
+      {/* IMAGE INPUT */}
+      <FloatingLabel controlId="floatingInput2" label="Author Last Name" className="mb-3 text-black">
+        <Form.Control type="text" placeholder="Smith" name="last_name" value={formInput.last_name} onChange={handleChange} required className="text-black" />
       </FloatingLabel>
 
-      {/* PRICE INPUT  */}
-      <FloatingLabel controlId="floatingInput3" label="Author Email" className="mb-3">
-        <Form.Control type="text" placeholder="111@gggg.com" name="email" value={formInput.email} onChange={handleChange} required />
+      {/* PRICE INPUT */}
+      <FloatingLabel controlId="floatingInput3" label="Author Email" className="mb-3 text-black">
+        <Form.Control type="text" placeholder="111@gggg.com" name="email" value={formInput.email} onChange={handleChange} required className="text-black" />
       </FloatingLabel>
 
-      {/* DESCRIPTION TEXTAREA  */}
-      <FloatingLabel controlId="floatingTextarea" label="Image" className="mb-3">
-        <Form.Control type="url" placeholder="Image URL" name="image" value={formInput.image} onChange={handleChange} required />
+      {/* DESCRIPTION TEXTAREA */}
+      <FloatingLabel controlId="floatingTextarea" label="Image" className="mb-3 text-black">
+        <Form.Control type="url" placeholder="Image URL" name="image" value={formInput.image} onChange={handleChange} required className="text-black" />
       </FloatingLabel>
 
-      {/* A WAY TO HANDLE UPDATES FOR TOGGLES, RADIOS, ETC  */}
+      {/* A WAY TO HANDLE UPDATES FOR TOGGLES, RADIOS, ETC */}
       <Form.Check
-        className="text-white mb-3"
+        className="text-black mb-3"
         type="switch"
         id="favorite"
-        name="favorite" // Note that Name is used on the handle change so is important
+        name="favorite"
         label="favorite?"
         checked={formInput.favorite}
         onChange={(e) => {
@@ -89,8 +89,10 @@ function AuthorForm({ obj = initialState }) {
         }}
       />
 
-      {/* SUBMIT BUTTON  */}
-      <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Author</Button>
+      {/* SUBMIT BUTTON */}
+      <Button type="submit" className="text-black">
+        {obj.firebaseKey ? 'Update' : 'Create'} Author
+      </Button>
     </Form>
   );
 }
