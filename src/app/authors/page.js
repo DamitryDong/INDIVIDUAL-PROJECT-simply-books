@@ -31,7 +31,7 @@ function AuthorsPage() {
   return (
     <div className="text-center my-4">
       <Link href="/authors/new" passHref>
-        <Button>Add an Author TODO</Button>
+        <Button variant="warning">Add an Author TODO</Button>
       </Link>
       <div className="d-flex flex-wrap">
         {/* map over books here using BookCard component */}

@@ -13,8 +13,8 @@ export default function NavBar() {
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
+          {/* Links on the left */}
           <Nav className="me-auto">
-            {/* CLOSE NAVBAR ON LINK SELECTION: https://stackoverflow.com/questions/72813635/collapse-on-select-react-bootstrap-navbar-with-nextjs-not-working */}
             <Link className="nav-link" href="/">
               Books
             </Link>
@@ -24,16 +24,19 @@ export default function NavBar() {
             <Link className="nav-link" href="/profile">
               Profile
             </Link>
-            <Link className="nav-link" href="/">
-              Community List WIP
-            </Link>
-            <Link className="nav-link" href="/">
-              Community Adds WIP
-            </Link>
           </Nav>
-          <Button variant="danger" onClick={signOut}>
-            Sign Out
-          </Button>
+          {/* Links on the right with some added spacing for the button just because it makes sense */}
+          <Nav className="ms-auto">
+            <Link className="nav-link" href="/communityBooks">
+              Book Shop WIP
+            </Link>
+            <Link className="nav-link" href="/">
+              🛒 Cart
+            </Link>
+            <Button variant="outline-dark" onClick={signOut} style={{ marginLeft: '40px' }}>
+              Sign Out
+            </Button>
+          </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
