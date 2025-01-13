@@ -30,7 +30,7 @@ export default function NavBar() {
             <Link className="nav-link" href="/communityBooks">
               Book Shop WIP
             </Link>
-            <Link className="nav-link" href="/">
+            <Link className="nav-link" href="/checkoutPage">
               🛒 Cart
             </Link>
             <Button variant="outline-dark" onClick={signOut} style={{ marginLeft: '40px' }}>
