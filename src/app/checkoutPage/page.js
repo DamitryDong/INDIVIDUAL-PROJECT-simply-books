@@ -25,6 +25,7 @@ function CartPage() {
       <Button variant="danger" onClick={handleRemoveItem}>
         Clear Cart
       </Button>
+      <Button variant="primary">Primary</Button>
       {cartItems.length === 0 ? (
         <p>Your cart is empty</p>
       ) : (
@@ -35,7 +36,7 @@ function CartPage() {
               <Card.Body>
                 <p>${item.price}</p>
                 <Button variant="danger" onClick={() => handleRemoveOneItem(item.firebaseKey)}>
-                  Remove
+                  Removed
                 </Button>
               </Card.Body>
             </Card>

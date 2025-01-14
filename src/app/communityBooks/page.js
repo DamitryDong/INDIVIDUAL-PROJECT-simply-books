@@ -3,7 +3,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { getAllBooks } from '../../api/bookData';
+import { getPublishBooks } from '../../api/bookData';
 import { useAuth } from '../../utils/context/authContext';
 import CommunityBookCard from '../../components/CommunityBookCard';
 
@@ -16,7 +16,7 @@ function Home() {
 
   // create a function that makes the API call to get all the books
   const getAllTheBooks = () => {
-    getAllBooks(user.uid).then(setBooks);
+    getPublishBooks(user.uid).then(setBooks);
     console.log(user.uid);
   };
 
@@ -28,7 +28,7 @@ function Home() {
 
   return (
     <div className="text-center my-4">
-      <h1>No You Can NOT Actually Pay</h1>
+      <h1>No You Can NOT Actually Pay, so SHOP AWAY!!!</h1>
       <div className="d-flex flex-wrap">
         {books.map((book) => (
           <CommunityBookCard key={book.firebaseKey} bookObj={book} onUpdate={getAllTheBooks} />

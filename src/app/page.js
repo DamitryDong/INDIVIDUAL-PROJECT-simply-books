@@ -26,16 +26,32 @@ function Home() {
   useEffect(() => {
     getAllTheBooks();
   }, []);
-  // [] this is a dependecy, if these values inside are changed, this side effect will run again, if we leave it empty this won't run again.
 
   return (
     <div className="text-center my-4">
-      <Link href="/book/new" passHref>
-        <Button variant="warning">Add A Book</Button>
-      </Link>
+      {/* Conditional rendering based on user UID */}
+      {user?.uid === 'ryFqlJOPLgd01ATKftErpWMnHpQ2' ? (
+        <p>
+          You are logged in as a <strong>Book Manager</strong>.
+        </p>
+      ) : (
+        <p>
+          You are logged in as a <strong>Customer</strong>. Please navigate to the Book Shop to buy a book!
+          <br />
+          As a customer you do not have permission to create new books and authors.
+        </p>
+      )}
+
+      {/* Add Book Button visible for managers */}
+      {user?.uid === 'ryFqlJOPLgd01ATKftErpWMnHpQ2' && (
+        <Link href="/book/new" passHref>
+          <Button variant="warning">ADMIN: Add A Book</Button>
+        </Link>
+      )}
+
       <div className="d-flex flex-wrap">
         {books.map((book) => (
-          <BookCard key={book.firebaseKey} bookObj={book} onUpdate={getAllTheBooks} />
+          <BookCard key={book.firebaseKey} bookObj={book} onUpdate={getAllTheBooks} userUid={user.uid} />
         ))}
       </div>
     </div>

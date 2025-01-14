@@ -1,5 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-
 'use client';
 
 import React, { useEffect, useState } from 'react';
@@ -10,33 +8,43 @@ import { getAllTheAuthors } from '../../api/authorData';
 import AuthorCard from '../../components/AuthorCard';
 
 function AuthorsPage() {
-  // Set a state for books
   const [authors, setAuthors] = useState([]);
-
-  // Get user ID using useAuth Hook
   const { user } = useAuth();
 
-  // create a function that makes the API call to get all the books
-  const getAllTheAuthorsForDom = () => {
-    getAllTheAuthors(user.uid).then(setAuthors);
-    console.log(user.uid);
-  };
-
-  // make the call to the API to get all the books on component render
   useEffect(() => {
-    getAllTheAuthorsForDom();
-  }, []);
-  // [] this is a dependecy, if these values inside are changed, this side effect will run again, if we leave it empty this won't run again.
+    if (user?.uid) {
+      getAllTheAuthors(user.uid).then(setAuthors);
+    }
+  }, [user?.uid]); // Runs when user.uid changes
 
   return (
     <div className="text-center my-4">
-      <Link href="/authors/new" passHref>
-        <Button variant="warning">Add an Author TODO</Button>
-      </Link>
+      {user?.uid === 'ryFqlJOPLgd01ATKftErpWMnHpQ2' ? (
+        <p>
+          You are logged in as a <strong>Book Manager</strong>. You may edit the authors
+        </p>
+      ) : (
+        <p>
+          You are logged in as a <strong>Customer</strong>.
+        </p>
+      )}
+      {user?.uid === 'ryFqlJOPLgd01ATKftErpWMnHpQ2' ? (
+        <Link href="/authors/new" passHref>
+          <Button variant="warning" style={{ marginBottom: '20px' }}>
+            Add an Author
+          </Button>
+        </Link>
+      ) : (
+        <p>Please take a look at our amazing Authors who has written all your favorite books!</p>
+      )}
       <div className="d-flex flex-wrap">
-        {/* map over books here using BookCard component */}
         {authors.map((author) => (
-          <AuthorCard key={author.firebaseKey} authorObj={author} onUpdate={getAllTheAuthorsForDom} />
+          <AuthorCard
+            key={author.firebaseKey}
+            authorObj={author}
+            onUpdate={() => getAllTheAuthors(user.uid).then(setAuthors)} // updates after an author is added/updated
+            userUid={user.uid}
+          />
         ))}
       </div>
     </div>

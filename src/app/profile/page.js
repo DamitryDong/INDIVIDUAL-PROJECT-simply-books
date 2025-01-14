@@ -36,6 +36,17 @@ function Profile() {
         style={{ maxWidth: '100px', borderRadius: '20%' }} // Optional: Add styling for the image
       />
       <h1>{user.displayName || 'User Profile'}</h1>
+
+      {user?.uid === 'ryFqlJOPLgd01ATKftErpWMnHpQ2' ? (
+        <p style={{ color: 'Orange' }}>
+          <strong>Book Manager</strong>.
+        </p>
+      ) : (
+        <p style={{ color: 'blue' }}>
+          <strong>Customer</strong>.
+        </p>
+      )}
+
       <p>Email: {user.email}</p>
       <p>Total Books: {books.length}</p>
       <h2>Book List:</h2>
