@@ -80,7 +80,7 @@ function BookCard({ bookObj, onUpdate, userUid }) {
   if (bookObj?.publish === 'true') {
     badge = (
       <Badge bg="info" className="Book-status-badge">
-        Published
+        Publish
       </Badge>
     );
   } else if (bookObj?.publish === 'false') {
@@ -102,6 +102,13 @@ function BookCard({ bookObj, onUpdate, userUid }) {
       <img className="book-image" src={bookObj.image} alt={bookObj.title} />
 
       {badge}
+      <Badge
+        style={{
+          visibility: 'hidden',
+        }}
+      >
+        -
+      </Badge>
 
       <div className="overlay">
         <h2 className="book-title">{bookObj.title}</h2>
