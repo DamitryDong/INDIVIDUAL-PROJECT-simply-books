@@ -121,11 +121,13 @@ function BookCard({ bookObj, onUpdate, userUid }) {
               VIEW
             </Button>
           </Link>
-          <Link href={`/book/edit/${bookObj.firebaseKey}`} passHref>
-            <Button variant="dark" className="bookmark-button edit">
-              EDIT
-            </Button>
-          </Link>
+          {userUid === 'ryFqlJOPLgd01ATKftErpWMnHpQ2' && (
+            <Link href={`/book/edit/${bookObj.firebaseKey}`} passHref>
+              <Button variant="dark" className="bookmark-button edit">
+                EDIT
+              </Button>
+            </Link>
+          )}
           <Button variant="danger" onClick={deleteThisBook} className="bookmark-button delete">
             DELETE
           </Button>

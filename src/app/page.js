@@ -45,7 +45,9 @@ function Home() {
       {/* Add Book Button visible for managers */}
       {user?.uid === 'ryFqlJOPLgd01ATKftErpWMnHpQ2' && (
         <Link href="/book/new" passHref>
-          <Button variant="warning">ADMIN: Add A Book</Button>
+          <Button variant="warning" style={{ marginBottom: '40px' }}>
+            ADMIN: Add A Book
+          </Button>
         </Link>
       )}
 

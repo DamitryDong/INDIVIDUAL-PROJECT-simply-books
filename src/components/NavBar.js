@@ -6,12 +6,24 @@ import { signOut } from '../utils/auth';
 import { useCart } from './cartContext';
 
 export default function NavBar() {
+  // THIS IS JUST SOME LOGO STYLE NOT IMPORTANT AT ALL!!
+  const logoStyle = {
+    fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+    fontWeight: 'bold',
+    fontSize: '30px',
+    color: 'black',
+    textDecoration: 'none',
+    display: 'flex',
+    alignItems: 'center',
+  };
+
   const { cartItems } = useCart();
   const cartItemCount = cartItems.length;
+
   return (
     <Navbar collapseOnSelect expand="lg" bg="warning">
       <Container>
-        <Link passHref href="/" className="navbar-brand">
+        <Link passHref href="/" className="navbar-brand" style={logoStyle}>
           Simply B
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
