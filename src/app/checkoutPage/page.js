@@ -1,19 +1,49 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { useCart } from '../../components/cartContext';
+import { useAuth } from '../../utils/context/authContext';
+import { createBook, updateBook } from '../../api/bookData';
 
 function CartPage() {
   // Access cart items from context that we made which will hold all the data until we click delete.
   const { cartItems, setCartItems, removeFromCart } = useCart();
+  const { user } = useAuth();
+
+  const [purchaseMessage, setPurchaseMessage] = useState('');
 
   const handleRemoveItem = () => {
     setCartItems([]);
   };
 
   const handleRemoveOneItem = (firebaseKey) => {
-    removeFromCart(firebaseKey); // Check the useCart function to see how, but this just removes on item with that firebasekey
+    removeFromCart(firebaseKey); // Check the useCart function to see how, but this just removes one item with that firebaseKey
+  };
+
+  const handleBuyItem = () => {
+    const payload = [];
+
+    cartItems.forEach((item) => {
+      payload.push({
+        description: item.description,
+        image: item.image,
+        price: item.price,
+        sale: item.sale,
+        title: item.title,
+        author_id: item.author_id,
+        publish: 'copied',
+        uid: user.uid,
+      });
+    });
+
+    payload.forEach((payloadItem) => {
+      createBook(payloadItem).then(({ name }) => {
+        const patchPayload = { firebaseKey: name };
+        updateBook(patchPayload).then(setCartItems([]));
+        setPurchaseMessage('YAY!!! go checkout your near books!!');
+      });
+    });
   };
 
   const totalCost = cartItems.reduce((total, item) => total + parseFloat(item.price || 0), 0);
@@ -25,7 +55,10 @@ function CartPage() {
       <Button variant="danger" onClick={handleRemoveItem}>
         Clear Cart
       </Button>
-      <Button variant="primary">Primary</Button>
+      <Button variant="primary" onClick={handleBuyItem}>
+        Buy
+      </Button>
+      {purchaseMessage && <p className="text-success">{purchaseMessage}</p>}
       {cartItems.length === 0 ? (
         <p>Your cart is empty</p>
       ) : (
