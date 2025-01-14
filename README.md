@@ -4,7 +4,7 @@
 [Simply Books site](https://individual-project-simply-books.vercel.app/)
 
 ## Link to Loom Video Walkthrough of the App
-[Video overview](https://www.loom.com/share/c13e93e6635e49fc91f92842137705b7?sid=667c3c98-b87b-461b-b989-063ac700f02f)
+https://www.loom.com/share/c13e93e6635e49fc91f92842137705b7?sid=667c3c98-b87b-461b-b989-063ac700f02f
 
 ## Overview of the Project
 Simply Books is a web application designed to mimic a book buying/selling platform where users can either be buyers or sellers, depending on the account they log into.
