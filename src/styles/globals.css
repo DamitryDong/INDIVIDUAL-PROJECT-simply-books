@@ -17,6 +17,7 @@ h1, h2, h3, h4, h5, h6, p, span, a {
   border-radius: 10px;
   box-shadow: -4px 20px 20px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
+
 }
 
 .book-card:hover {
@@ -75,7 +76,7 @@ h1, h2, h3, h4, h5, h6, p, span, a {
 
 .button-container {
   position: absolute;
-  top: -60px; /* Start above the card */
+  top: -60px;
   left: 20%;
   transform: translateX(-30%);
   display: flex;
@@ -89,7 +90,7 @@ h1, h2, h3, h4, h5, h6, p, span, a {
 }
 
 .bookmark-button {
-  border-radius: 0 0 10px 10px; /* Rounded bottom corners for bookmark style */
+  border-radius: 0 0 10px 10px; 
   font-size: 0.8rem;
   padding: 10px;
   transition: transform 0.2s ease, background-color 0.3s ease;
@@ -104,5 +105,18 @@ h1, h2, h3, h4, h5, h6, p, span, a {
   background-color: #e63946;
 }
 
-/* SECTION FOR COMMUNITY STORE */
+/* CSS FOR NAV BAR */
+.nav-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+  transition: color 0.3s ease, transform 0.3s ease;
+  margin-left: 10px;
+}
+
+.nav-link:hover {
+  font-weight: bold;
+  transform: scale(1.15);
+}
 

@@ -20,11 +20,7 @@ export default function NavBar() {
           <Nav className="me-auto">
             <Link className="nav-link" href="/">
               <img src="/free-opened-book-icon-3163-thumb.png" alt="Books" style={{ width: '20px', marginRight: '5px' }} />
-              Books
-            </Link>
-            <Link className="nav-link" href="/authors">
-              <img src="/Pencil-icon.png" alt="Authors" style={{ width: '20px', marginRight: '5px' }} />
-              Authors
+              My Books
             </Link>
             <Link className="nav-link" href="/profile">
               <img src="/6522516.png" alt="Authors" style={{ width: '20px', marginRight: '5px' }} />
@@ -33,6 +29,10 @@ export default function NavBar() {
           </Nav>
           {/* Links on the right with some added spacing for the button just because it makes sense */}
           <Nav className="ms-auto">
+            <Link className="nav-link" href="/authors">
+              <img src="/Pencil-icon.png" alt="Authors" style={{ width: '20px', marginRight: '5px' }} />
+              Authors
+            </Link>
             <Link className="nav-link" href="/communityBooks">
               <img src="/shopping-bag-icon-1800x2048-srvkec2m.png" alt="Authors" style={{ width: '16px', marginRight: '4px' }} />
               Book Shop

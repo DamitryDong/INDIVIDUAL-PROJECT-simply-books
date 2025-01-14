@@ -18,7 +18,7 @@ function BookCard({ bookObj, onUpdate }) {
       <img className="book-image" src={bookObj.image} alt={bookObj.title} />
       <div className="overlay">
         <h2 className="book-title">{bookObj.title}</h2>
-        <p className="book-description">
+        <p className="book-description" style={{ paddingLeft: '15px', paddingRight: '15px' }}>
           <strong>Description:</strong> {bookObj.description}
         </p>
         <div className="button-container">
