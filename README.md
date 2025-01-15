@@ -3,6 +3,8 @@
 ## Link to the Deployed Project
 [Simply Books site](https://individual-project-simply-books.vercel.app/)
 
+SEARCH BAR NEWLY ADDED WASN'T ON VIDEO!
+
 ## Link to Loom Video Walkthrough of the App
 https://www.loom.com/share/9e4de38e5ec749f8acb19045240e603c?sid=c06aff65-7aa5-4053-b4e6-052a6ecceb6b
 
