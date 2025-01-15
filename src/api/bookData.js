@@ -42,7 +42,7 @@ const getPublishBooks = () =>
       .catch(reject);
   });
 
-// TODO: DELETE BOOK
+//  DELETE BOOK
 const deleteBook = (firebaseKey) =>
   new Promise((resolve, reject) => {
     fetch(`${endpoint}/books/${firebaseKey}.json`, {
@@ -56,7 +56,7 @@ const deleteBook = (firebaseKey) =>
       .catch(reject);
   });
 
-// TODO: GET SINGLE BOOK
+//  GET SINGLE BOOK
 const getSingleBook = (firebaseKey) =>
   new Promise((resolve, reject) => {
     fetch(`${endpoint}/books/${firebaseKey}.json`, {
@@ -70,7 +70,7 @@ const getSingleBook = (firebaseKey) =>
       .catch(reject);
   });
 
-// TODO: CREATE BOOK
+//  CREATE BOOK
 const createBook = (payload) =>
   new Promise((resolve, reject) => {
     fetch(`${endpoint}/books.json`, {
@@ -85,7 +85,7 @@ const createBook = (payload) =>
       .catch(reject);
   });
 
-// TODO: UPDATE BOOK
+//  UPDATE BOOK
 const updateBook = (payload) =>
   new Promise((resolve, reject) => {
     fetch(`${endpoint}/books/${payload.firebaseKey}.json`, {
