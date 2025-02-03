@@ -1,7 +1,7 @@
 # Simply Books
 
 ## Link to the Deployed Project
-[https://individual-project-simply-books.vercel.app/](https://simplybooks.damitrydev.com/)
+[Simply Book Site!](https://simplybooks.damitrydev.com/)
 
 SEARCH BAR NEWLY ADDED WASN'T ON VIDEO!
 
